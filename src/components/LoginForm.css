@@ -1,61 +1,82 @@
-.form-container {
+  .form-container {
     max-width: 400px;
     margin: 0 auto;
-    padding: 20px;
-    border-radius: 8px;
+    padding: 30px;
+    border-radius: 12px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    background-color: #f9f9f9;
-  }
-  
-  /* Heading style */
-  .form-container h2 {
+    background-color: #e6eef1;
     text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+.form-container h1 {
+    margin-bottom: 10px;
+    font-size: 24px;
+    color: #324a5e;
+}
+
+.form-container h2 {
     margin-bottom: 20px;
-    color: #333;
-  }
-  
-  /* Form styling */
-  form {
+    color: #324a5e;
+}
+
+form {
     display: flex;
     flex-direction: column;
-  }
-  
-  /* Input fields styling */
-  input[type="email"],
-  input[type="password"] {
+}
+
+input[type="email"],
+input[type="password"] {
     margin-bottom: 15px;
     padding: 10px;
-    border: 1px solid #ddd;
+    border: 1px solid #b0c4de;
     border-radius: 4px;
     font-size: 16px;
-  }
-  
-  /* Button styling */
-  button {
+    background-color: #f8fafc;
+    color: #324a5e;
+}
+
+button {
     padding: 10px;
     border: none;
     border-radius: 4px;
-    background-color: #007bff;
+    background-color: #324a5e;
     color: white;
     font-size: 16px;
     cursor: pointer;
     transition: background-color 0.3s;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  
-  /* Success message styling */
-  .success-message {
+}
+
+button:hover {
+    background-color: #2c3e50;
+}
+
+.success-message {
     color: #28a745;
     margin-top: 10px;
     text-align: center;
-  }
-  
-  /* Error message styling */
-  .error-message {
+}
+
+.error-message {
     color: #dc3545;
     margin-top: 10px;
     text-align: center;
-  }
+}
+
+.footer-text {
+    margin-top: 20px;
+}
+
+.footer-text p {
+    color: #324a5e;
+}
+
+.footer-text a {
+    color: #0077b6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-text a:hover {
+    text-decoration: underline;
+}
