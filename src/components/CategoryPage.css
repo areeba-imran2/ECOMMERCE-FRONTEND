@@ -1,0 +1,200 @@
+/* Reset margin, padding, and box-sizing for consistency */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* General body styling */
+body {
+    background-color: #f4f4f4;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: calc(100vh - 60px); /* Adjust for the height of the fixed navbar */
+    margin-top: 60px; /* Space to account for the fixed navbar */
+}
+
+/* Styling for the page container */
+.category-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    padding: 20px;
+    margin-top: 20px; /* Additional space below the navbar */
+}
+
+/* Flex container for form and list */
+.form-and-list {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    gap: 30px;
+}
+
+/* Styling for the form container */
+.category-form-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden; /* Ensures content stays within the container */
+}
+
+/* Styling for the form */
+.category-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Form group styling */
+.category-form .form-group {
+    margin-bottom: 15px;
+}
+
+/* Input field styling */
+.category-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 100%;
+}
+
+/* Button styling */
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+button[type="submit"], button[type="button"] {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    width: 48%; /* Adjusted width to fit within the form */
+}
+
+button[type="submit"] {
+    background-color: #28a745;
+    color: white;
+}
+
+button[type="submit"]:hover {
+    background-color: #218838;
+}
+
+button[type="button"] {
+    background-color: #dc3545;
+    color: white;
+}
+
+button[type="button"]:hover {
+    background-color: #c82333;
+}
+
+/* Category list styling */
+.category-list {
+    width: 100%;
+}
+
+.category-item {
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+.category-item:last-child {
+    border-bottom: none;
+}
+
+.category-item-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-right: 20px; /* Space between content and buttons */
+}
+
+/* Category buttons styling */
+.category-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.edit-button, .delete-button {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}
+
+.delete-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+/* Message styling */
+.message {
+    text-align: center;
+    color: #d9534f;
+    margin-top: 10px;
+}
+
+/* Navigation buttons styling */
+.navigation-buttons {
+    margin-top: 20px;
+}
+
+.nav-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .form-and-list {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .category-form-container, .category-list {
+        max-width: 100%;
+    }
+}
