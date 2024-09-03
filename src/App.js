@@ -1,111 +1,46 @@
-// // import React from 'react';
-// // import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-// // import Signup from './components/SignupForm';
-// // import Login from './components/LoginForm';
-// // import './App.css'; // Import the CSS file for styling
-
-// // function App() {
-// //     return (
-// //         <Router>
-// //             <div className="container">
-// //                 <nav className="nav">
-// //                     <Link to="/signup">
-// //                         <button className="nav-button">Signup</button>
-// //                     </Link>
-// //                     <Link to="/login">
-// //                         <button className="nav-button">Login</button>
-// //                     </Link>
-// //                 </nav>
-// //                 <Routes>
-// //                     <Route path="/signup" element={<Signup />} />
-// //                     <Route path="/login" element={<Login />} />
-// //                 </Routes>
-// //             </div>
-// //         </Router>
-// //     );
-// // }
-
-// // export default App;
-
-
-// // NEW CODEEE
-
-// import React from 'react';
-// import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
-// import Signup from './components/SignupForm';
-// import Login from './components/LoginForm';
-// import ProductForm from './components/ProductForm';
-// import './App.css';
-
-// function App() {
-//     return (
-//         <Router>
-//             <div className="container">
-//                 <nav className="nav">
-//                     <Link to="/signup">
-//                         <button className="nav-button">Signup</button>
-//                     </Link>
-//                     <Link to="/login">
-//                         <button className="nav-button">Login</button>
-//                     </Link>
-//                 </nav>
-//                 <Routes>
-//                     <Route path="/signup" element={<Signup />} />
-//                     <Route path="/login" element={<Login />} />
-//                     <Route path="/home" element={<ProductForm />} />
-//                     <Route path="/" element={<Navigate to="/login" />} />
-//                 </Routes>
-//             </div>
-//         </Router>
-//     );
-// }
-
-// export default App;
-
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link, Navigate, useLocation } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
+import Navbar from './components/Navbar';
 import Signup from './components/SignupForm';
 import Login from './components/LoginForm';
-import ProductForm from './components/ProductForm';
+import ProductPage from './components/ProductPage';
+import OrderPage from './components/OrderPage';
+import CategoryPage from './components/CategoryPage';
+import ProductCategoryManagement from './components/ProductCategoryManagement';
+import { AuthProvider, useAuth } from './components/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 
-// Navigation component to conditionally render buttons
-function Navigation() {
-    const location = useLocation();
+// Component to handle routing and authentication
+const AppRoutes = () => {
+    const { isAuthenticated, logout } = useAuth();
 
-    // Check if the current route is '/home'
-    const isHomePage = location.pathname === '/home';
+    return (
+        <>
+            <Navbar onLogout={logout} />
+            <Routes>
+                <Route path="/signup" element={<Signup />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/products" element={<ProtectedRoute element={ProductPage} />} />
+                <Route path="/orders" element={<ProtectedRoute element={OrderPage} />} />
+                <Route path="/categories" element={<ProtectedRoute element={CategoryPage} />} />
+                <Route path="/product-categories" element={<ProtectedRoute element={ProductCategoryManagement} />} />
+                <Route path="/" element={<Navigate to={isAuthenticated ? "/products" : "/login"} />} />
+            </Routes>
+        </>
+    );
+};
 
-    // Only show the buttons if not on the home page
-    if (!isHomePage) {
-        return (
-            <nav className="nav">
-                <Link to="/signup">
-                    <button className="nav-button">Signup</button>
-                </Link>
-                <Link to="/login">
-                    <button className="nav-button">Login</button>
-                </Link>
-            </nav>
-        );
-    }
-
-    return null; // Render nothing if on the home page
-}
-
+// Main App component
 function App() {
     return (
-        <Router>
-            <div className="container">
-                <Navigation /> {/* Render the navigation component */}
-                <Routes>
-                    <Route path="/signup" element={<Signup />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/home" element={<ProductForm />} />
-                    <Route path="/" element={<Navigate to="/login" />} />
-                </Routes>
-            </div>
-        </Router>
+        <AuthProvider>
+            <Router>
+                <div className="App">
+                    <AppRoutes />
+                </div>
+            </Router>
+        </AuthProvider>
     );
 }
 
