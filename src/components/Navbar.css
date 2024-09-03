@@ -1,0 +1,34 @@
+/* Navbar.css */
+.navbar {
+    background-color: #004080; /* Darker blue to contrast with light blue */
+    color: white;
+    padding: 10px 20px;
+    position: fixed; /* Ensure navbar is fixed at the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensures it stays on top of other content */
+}
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end; /* Align items to the right */
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    margin: 0;
+}
+
+.navbar-links a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    display: block;
+}
+
+.navbar-links a:hover {
+    background-color: #003366; /* Even darker blue for hover effect */
+}
